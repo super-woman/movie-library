@@ -1,0 +1,4 @@
+node_modules/
+.env
+.nyc_output/
+env_variables.yaml
