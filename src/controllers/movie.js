@@ -44,6 +44,10 @@ class MovieController {
         try {
             const result = await Movie.findById(req.params.id)
 
+            if(!result){
+                return resHandler(res,false,'Movie not found',200)
+            }
+
             return resHandler(res,true,result,200)
         } catch (error) {
             if(error.name==='CastError'){
@@ -81,13 +85,18 @@ class MovieController {
                 }
                 return resHandler(res,false,error.message)
             }
+            if (!movie){
+
+                return resHandler(res,false,'Movie not found')
+            }
             return resHandler(res,true,movie,200);
           }
           );
     }
 
     static async deleteMovie(req,res){
-        const result = await Movie.findById(req.params.id)
+        try {
+            const result = await Movie.findById(req.params.id)
 
         if(!result){
             return resHandler(res,false,'Movie not found', 404)
@@ -95,6 +104,15 @@ class MovieController {
         result.remove()
 
         return resHandler(res,true,result,200)
+
+        } catch (error) {
+            if(error.name==='CastError'){
+                return resHandler(res,false,'Movie not found', 404)
+            }
+
+         return resHandler(res,false,error.message)
+
+        }
 }
 }
 export default MovieController;
