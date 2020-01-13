@@ -13,7 +13,7 @@ const startServer = async ()=>{
   app.use(cors());
   app.use( bodyParser.json());
 
-    await  mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true }, (err)=>{ /* eslint-disable no-undef */
+    await  mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true }, (err)=>{ /* eslint-disable no-undef */
       if (!err) console.log('MongoDB has connected successfully');
     });
 

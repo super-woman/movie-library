@@ -14,6 +14,7 @@ class MovieController {
         const movie = new Movie({
             title,
             director,
+            description,
             genre,
             releaseDate: new Date(releaseDate),
             imageUrl,
@@ -67,6 +68,7 @@ class MovieController {
             $set:{
                 title,
                 director,
+                description,
                 genre,
                 releaseDate: new Date(releaseDate),
                 imageUrl,
