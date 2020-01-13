@@ -3,9 +3,9 @@ import { isRequired, resHandler,newError } from '../helpers';
 
 class MovieController {
     static async addMovie(req,res){
-        const {title,director,genre,releaseDate,imageUrl,trailer} = req.body
+        const {title,director,description,genre,releaseDate,imageUrl,trailer} = req.body
 
-        const validate = isRequired({title,director,genre,releaseDate})
+        const validate = isRequired({title,director,description,genre,releaseDate,})
 
         if(validate){
            return resHandler(res,false,validate)
@@ -55,9 +55,9 @@ class MovieController {
 
 
     static async updateMovie(req,res){
-        const {title,director,genre,releaseDate,imageUrl,trailer} = req.body
+        const {title,director,description,genre,releaseDate,imageUrl,trailer} = req.body
 
-        const validate = isRequired({title,director,genre,releaseDate})
+        const validate = isRequired({title,director,description,genre,releaseDate})
 
         if(validate){
            return resHandler(res,false,validate)
